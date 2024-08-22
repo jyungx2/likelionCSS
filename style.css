@@ -41,6 +41,8 @@ a {
   /* box-shadow: inset 0 0 20px red; */
   max-width: 1080px;
   margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 /* Typography */
@@ -75,7 +77,7 @@ a {
 
 /* Components */
 .section {
-  box-shadow: inset 0 0 60px rgb(226, 43, 110);
+  /* box-shadow: inset 0 0 60px rgb(226, 43, 110); */
   background-color: var(--color-violet-90);
 
   padding: 100px 0;
@@ -90,13 +92,10 @@ a {
 }
 
 .container-header {
-  box-shadow: inset 0 0 20px yellow;
+  /* box-shadow: inset 0 0 20px yellow; */
   display: flex;
   column-gap: 144px;
   align-items: center;
-
-  position: relative;
-
   margin-bottom: 100px;
 }
 
@@ -175,30 +174,27 @@ a {
   margin-left: -120px;
 }
 
-/* .container-contents {
-
-} */
-
 .item {
-  box-shadow: inset 0 0 20px green;
+  /* box-shadow: inset 0 0 20px green; */
   display: flex;
   flex-direction: row;
 }
 
-.pros:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-/* .item.right {
+/* ❓ 왜 안먹히지?? */
+/* .item:nth-child(even) {
   flex-direction: row-reverse;
 } */
+
+.item.right {
+  flex-direction: row-reverse;
+}
 
 .item-header {
   aspect-ratio: 280/148;
   width: 280px;
   flex-shrink: 0;
 
-  /* ⭐️ */
+  /* 🌼 */
   position: relative;
   z-index: 0;
 }
@@ -208,7 +204,7 @@ a {
   content: " ";
   background-color: var(--color-black);
 
-  /* ⭐️ */
+  /*  🌼  */
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -221,6 +217,7 @@ a {
   font-size: 3.2rem;
   color: var(--color-white);
 
+  /* 🌼 */
   position: absolute;
 
   /* ❓왜 적용이 안 될까?? => 🕊️ width & height를 주지 않아서!! */
@@ -234,12 +231,12 @@ a {
   transform: translate(-50%, -50%); */
 }
 
-.item-header .cover {
+.item-header .pros-cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
 
-  /* ⭐️ */
+  /* 🌼 */
   position: absolute;
   inset: 0;
   z-index: -2;
@@ -270,8 +267,10 @@ a {
   color: var(--color-black);
   margin-bottom: 12px;
   padding-left: 20px;
+
+  /* 🍰 */
   position: relative;
-  box-shadow: inset 0 0 20px rgb(118, 225, 12);
+  /* box-shadow: inset 0 0 20px rgb(118, 225, 12); */
 }
 
 .item-main .list:last-child {
@@ -286,10 +285,13 @@ a {
   height: 10px;
   border-radius: 50%;
 
+  /* 🍰 */
   position: absolute;
-  left: 0;
+  inset: 0;
+  margin: auto 0;
+  /* left: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%); */
 
   /* content: "·";
   color: var(--color-light-violet);
@@ -301,7 +303,8 @@ a {
 }
 
 .pros {
-  box-shadow: inset 0 0 20px rgb(118, 225, 12);
+  /* box-shadow: inset 0 0 20px rgb(118, 225, 12); */
+  /* ❓ flex-box써서 갭 주는게 나을까? Margin-bottom 주는 게 나을까? */
   display: flex;
   flex-direction: column;
   row-gap: 30px;
@@ -310,7 +313,12 @@ a {
 .pros-item {
   /* box-shadow: inset 0 0 20px rgb(92, 21, 13); */
   min-height: 148px;
+  /* margin-bottom: 30px; */
 }
+
+/* .pros-item:last-child {
+  margin-bottom: 0;
+} */
 
 .button {
   font-size: 1.6rem;
@@ -334,7 +342,7 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   /* 밑에 코드 없어도, grid-auto-rows: auto에 의해 내부 콘텐츠 만큼 자동 동기화되어
   그리드 아이템(카드)자체에 height: 100%을 안해도 된다!! */
-  grid-template-rows: repeat(2, minmax(593px, 1fr));
+  grid-template-rows: repeat(1, minmax(593px, 1fr));
   gap: 30px;
 }
 
@@ -344,19 +352,30 @@ a {
 
   display: flex;
   flex-direction: column;
-
-  overflow: hidden;
 }
 
 .grid-header {
   aspect-ratio: 340/255;
+
+  /* 💛 */
+  position: relative;
 }
 
-.grid-header img {
+.tool-cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-bottom: 4px solid var(--color-black);
+}
+
+.sold-out-badge {
+  width: 110px;
+  height: 110px;
+  /* 💛 */
+  position: absolute;
+  inset: 0;
+  margin-top: -10px;
+  margin-left: -10px;
 }
 
 .grid-contents {
@@ -396,16 +415,22 @@ a {
 }
 
 .grid-footer {
-  padding: 14px 18px 14px 22px;
+  /* box-shadow: inset 0 0 20px rgb(0, 36, 128); */
+  /* padding: 14px 18px 14px 22px; */
+  padding: 0 22px;
   margin-top: auto;
   display: flex;
   align-items: center;
+  column-gap: 40px;
+  overflow: hidden;
+  flex-basis: 60px;
 }
 
 .grid-footer h5 {
   /* box-shadow: inset 0 0 20px rgb(0, 36, 128); */
   font-size: 14px;
   color: var(--color-gray-50);
+  /* 🩷 */
   position: relative;
 }
 
@@ -416,9 +441,11 @@ a {
   width: 320px;
   height: 4px;
 
+  /* 🩷 */
   position: absolute;
-  left: 0;
-  top: 0;
+  inset: 0;
+  /* ❓❓❓ margin-bottom: 30px로 주는 순간, 선의 높이(4px)가 줄어든다. 
+  => footer의 높이가 내부 콘텐츠 높이만큼만 주어져서 Closed 부분은 먹히는 것. */
   margin-top: -20px;
 }
 
@@ -433,4 +460,68 @@ a {
   box-sizing: border-box;
   margin-left: -10px;
   box-shadow: 0 4px 4px 0 rgb(0 0 0 / 0.25);
+}
+
+@media (max-width: 800px) {
+  .section {
+    padding: 60px 0px;
+  }
+
+  .container-header {
+    flex-direction: column;
+    row-gap: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .header-title {
+    width: 460px;
+    font-size: 36px;
+  }
+
+  .container-header .button {
+    margin-left: unset;
+  }
+
+  .header-description::before {
+    width: 200px;
+    height: 2px;
+
+    margin-left: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-top: -10px;
+  }
+
+  .list {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .list::before {
+    left: 0;
+    top: 0;
+    /* 위아래 마진 다시 0으로 초기화 */
+    margin: 0;
+    /* y축: 밑으로 내려온다 - 양수. */
+    transform: translateY(50%);
+  }
+
+  .l_grid {
+    grid-template-columns: repeat(2, minmax(0, 340px));
+    grid-template-rows: repeat(2, minmax(593px, 1fr));
+    justify-content: center;
+  }
+
+  .grid-contents p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+
+    overflow: hidden;
+  }
 }
