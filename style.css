@@ -175,9 +175,9 @@ a {
   margin-left: -120px;
 }
 
-.container-contents {
-  /* box-shadow: inset 0 0 20px rgb(4, 56, 6); */
-}
+/* .container-contents {
+
+} */
 
 .item {
   box-shadow: inset 0 0 20px green;
@@ -185,9 +185,13 @@ a {
   flex-direction: row;
 }
 
-.item.right {
+.pros:nth-child(even) {
   flex-direction: row-reverse;
 }
+
+/* .item.right {
+  flex-direction: row-reverse;
+} */
 
 .item-header {
   aspect-ratio: 280/148;
@@ -247,7 +251,7 @@ a {
   flex-basis: 0;
   min-width: 0;
 
-  padding: 16px 21px;
+  padding: 16px 22px 21px;
   padding-bottom: 21px;
 }
 
@@ -265,7 +269,7 @@ a {
   line-height: 1.22em;
   color: var(--color-black);
   margin-bottom: 12px;
-
+  padding-left: 20px;
   position: relative;
   box-shadow: inset 0 0 20px rgb(118, 225, 12);
 }
@@ -328,12 +332,20 @@ a {
   /* box-shadow: inset 0 0 20px red; */
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* 밑에 코드 없어도, grid-auto-rows: auto에 의해 내부 콘텐츠 만큼 자동 동기화되어
+  그리드 아이템(카드)자체에 height: 100%을 안해도 된다!! */
+  grid-template-rows: repeat(2, minmax(593px, 1fr));
   gap: 30px;
 }
 
 .grid-item {
   background-color: var(--color-white);
   box-shadow: 0 0 12px 0 rgb(0 0 0/ 0.1);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
 }
 
 .grid-header {
@@ -350,6 +362,7 @@ a {
 .grid-contents {
   /* box-shadow: inset 0 0 20px red; */
   padding: 20px;
+  /* flex-grow: 1; */
 }
 
 .skill-type {
@@ -383,7 +396,10 @@ a {
 }
 
 .grid-footer {
-  padding: 20px 22px 23px;
+  padding: 14px 18px 14px 22px;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
 }
 
 .grid-footer h5 {
@@ -404,4 +420,17 @@ a {
   left: 0;
   top: 0;
   margin-top: -20px;
+}
+
+.members {
+  margin-left: auto;
+}
+
+.members img {
+  width: 30px;
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-left: -10px;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 0.25);
 }
