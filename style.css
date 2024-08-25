@@ -33,8 +33,9 @@ a {
 
 /* Layouts */
 .contents {
-  max-width: 1920px;
-  margin: 0 auto;
+  /*  */
+  /* max-width: 1920px;
+  margin: 0 auto; */
 }
 
 .l_wrapper {
@@ -76,11 +77,12 @@ a {
 }
 
 /* Components */
+/* 🍉 커피 예제와 다르게 그리드로 구현하면 여기선 너무 오버스펙이다!! 
+=> 커피 과제 함 해보자. */
 .section {
   /* box-shadow: inset 0 0 60px rgb(226, 43, 110); */
   background-color: var(--color-violet-90);
-
-  padding: 100px 0;
+  padding: 92px 0 100px;
 }
 
 .section.type_purple {
@@ -91,12 +93,13 @@ a {
   background-color: var(--color-ivory);
 }
 
-.container-header {
+.section-header {
   /* box-shadow: inset 0 0 20px yellow; */
   display: flex;
   column-gap: 144px;
   align-items: center;
   margin-bottom: 100px;
+  justify-content: space-between;
 }
 
 .header-title {
@@ -110,15 +113,11 @@ a {
 }
 
 /* 🌱 ivory section's title */
-.header-title.coral {
+.header-title.color_coral {
   font-weight: 500;
   min-width: 360px;
   color: var(--color-coral);
 }
-
-/* .header-title strong {
-  font-weight: 700;
-} */
 
 /* ❓🕊️ */
 .highlight {
@@ -127,16 +126,17 @@ a {
   font-weight: 700;
 }
 
-.highlight.strong::after {
+.highlight.type_strong::after {
   content: "";
   display: block;
+  /* width: 50%; */
   background-color: var(--color-orange);
   height: 26px;
   margin-top: -25px;
 }
 
 /* 🌱 ivory section's title */
-.highlight.light::after {
+.highlight.type_light::after {
   content: "";
   display: block;
   background-color: var(--color-white);
@@ -180,10 +180,16 @@ a {
   flex-direction: row;
 }
 
-/* ❓ 왜 안먹히지?? */
-/* .item:nth-child(even) {
+/* ❓ 작동 안 하는 이유? */
+/* 💥list 태그 안에 알맹이 디브를 또 하나 만들어서 복잡하게 셀렉할 수 밖에 없다💥 */
+/* 근데 지금까지 뭔가 안정성을 위해 li안에 div를 넣어야 한다고 배웠는데,, 여기선 그렇게 할 필요 없을까?
+=> 레이아웃과 컴포넌트를 따로따로 나눌 때만 그렇게 하는 건가?? 싶다.. */
+/* list들의 n번째 요소 안에서의 플렉스박스 디브 정렬을 바꾸는 것이기에
+리스트에 Nth child를 써주고, 그 안에 디브를 셀렉한다!! 그냥 아이템을 셀렉하면
+어디서부터 어디까지 범위 안에서 짝수번째를 의미하는지 어떻게 아니?? */
+.pros-item:nth-child(even) .item {
   flex-direction: row-reverse;
-} */
+}
 
 .item.right {
   flex-direction: row-reverse;
@@ -192,7 +198,7 @@ a {
 .item-header {
   aspect-ratio: 280/148;
   width: 280px;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
 
   /* 🌼 */
   position: relative;
@@ -253,15 +259,15 @@ a {
 }
 
 .item-main h3 {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 700;
-  color: var(--color-violet);
+  color: var(--color-violet-90);
 
   margin-bottom: 14px;
 }
 
 .item-main .list {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
   line-height: 1.22em;
   color: var(--color-black);
@@ -270,7 +276,6 @@ a {
 
   /* 🍰 */
   position: relative;
-  /* box-shadow: inset 0 0 20px rgb(118, 225, 12); */
 }
 
 .item-main .list:last-child {
@@ -292,17 +297,9 @@ a {
   /* left: 0;
   top: 50%;
   transform: translateY(-50%); */
-
-  /* content: "·";
-  color: var(--color-light-violet);
-  font-size: 40px;
-  height: 17px;
-  line-height: 17px;
-  width: 17px;
-  vertical-align: middle; */
 }
 
-.pros {
+.pros-container {
   /* box-shadow: inset 0 0 20px rgb(118, 225, 12); */
   /* ❓ flex-box써서 갭 주는게 나을까? Margin-bottom 주는 게 나을까? */
   display: flex;
@@ -310,15 +307,18 @@ a {
   row-gap: 30px;
 }
 
+/* 💥 얘는 지금 레이아웃으로 안쓰이고 있다!! => 굳이 li안에 div를 만들어서 쓸 필요 없는 것.💥
+=> 🌟그냥 pros-item(list)를 플렉스박스로 만들고 그 안에 바로 플렉스 아이템 요소를 넣어도 된다!!🌟 
+=> 예전에 ul = l_row, li = l_col으로 공공재로 쓰이는 레이아웃 역할의 요소를 만들 땐, 
+l_row : margin: 0 -20px; => 안에 요소(l_col)가 20픽셀만큼 양옆으로 늘어났기 때문에 그만큼 똑같이
+양옆을 잡고 늘린다는 개념으로 좌우로 빨리 끝나도록 만듦!! => 제목과 얼라인을 맞추기 위해.(같이시작,같이끝) 
+l_col : width: 33.33%; padding: 0 20px; box-sizing: border-box; 
+=> 여기서 Width: 33.33%는 한 row에 몇개의 컬럼이 들어갈지 정해야했기 때문!! 여기선 한줄에 한 컬럼이므로
+그냥 flex-direction: column해준 것... => 아예 레이아웃 기법이 다르다!! */
 .pros-item {
   /* box-shadow: inset 0 0 20px rgb(92, 21, 13); */
-  min-height: 148px;
-  /* margin-bottom: 30px; */
+  /* min-height: 148px; */
 }
-
-/* .pros-item:last-child {
-  margin-bottom: 0;
-} */
 
 .button {
   font-size: 1.6rem;
@@ -333,7 +333,7 @@ a {
 
   padding: 0 14px;
   border-radius: 4px;
-  margin-left: auto;
+  /* margin-left: auto; */
 }
 
 .l_grid {
@@ -341,8 +341,26 @@ a {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   /* 밑에 코드 없어도, grid-auto-rows: auto에 의해 내부 콘텐츠 만큼 자동 동기화되어
-  그리드 아이템(카드)자체에 height: 100%을 안해도 된다!! */
-  grid-template-rows: repeat(1, minmax(593px, 1fr));
+  그리드 아이템(카드)자체에 height: 100%을 안해도 된다!! 
+  & 그리드 특성 상 카드별로 동일한 높이를 가지게 됨. => 옆의 요소 높이 베껴옴!! */
+
+  /* 아래 코드는 필요 없다. 피그마상 높이가 593이라고 되어있어도, 내부 콘텐츠만큼만
+  차지하도록 grid-auto-rows: auto로 적용되게 냅두자. */
+  /* grid-template-rows: repeat(1, minmax(593px, 1fr)); */
+
+  /* 기획면에서 컨텐츠의 누락을 허용하지 않으면, webkit-box를 이용해 말줄임 시키지 못한다!
+  => 그러지 않는 이상, 말줄임을 사용할 수 있으며, height(grid-auto-row)는 Auto로
+  유지하고, 텍스트 부분에 flex-grow: 1을 주어 전체 그리드 카드는 내부 콘텐츠 만큼 줄어들고
+  늘어날 수 있게 하여 텍스트 부분의 양이 많아졌을 때 Flex-grow:1에 의해 늘어날 수 있도록!!
+  만약, 고정 높이(grid-template-rows: px)를 고정픽셀로 주게 된다면, grow:1에 의해 
+  늘어난 텍스트 부분의 영역이 그리드 카드를 침범하겠지!! (지훈님이 보여주신 케이스)  
+  => 따라서, 
+  
+  ✅ 아니면, 텍스트양을 제한 걸고, 백엔드단 기술로 말줄임표를 추가할 수도 있다. 
+  & 그라디언트 깔아서 은유를 줌(나 여기 있다~!라는 힌트!) 
+  & 짤려서 보지 못하는 텍스트는 클릭해서 자바스크립트로 모듈을 만들어 볼 수 있게!
+  => 컨텐츠 양이 많다면, <a> 요소를 이용해 새로운 페이지로 넘어가게 만들 수 있겠지만, 
+  그렇게 많지 않다면 그냥 javascript 이용해서 하는 것!! (✨keypoint✨) */
   gap: 30px;
 }
 
@@ -354,7 +372,7 @@ a {
   flex-direction: column;
 }
 
-.grid-header {
+.grid-item-header {
   aspect-ratio: 340/255;
 
   /* 💛 */
@@ -378,19 +396,22 @@ a {
   margin-left: -10px;
 }
 
-.grid-contents {
+.grid-item-contents {
   /* box-shadow: inset 0 0 20px red; */
   padding: 20px;
-  /* flex-grow: 1; */
+  /* 이걸 살리고,  */
+  flex-grow: 1;
+  min-width: 0;
+  flex-basis: 0;
 }
 
-.skill-type {
+.grid-item-contents .type {
   display: flex;
   column-gap: 4px;
   margin-bottom: 20px;
 }
 
-.skill-type a {
+.grid-item-contents .type a {
   background-color: var(--color-violet-50);
   color: var(--color-violet-90);
 
@@ -402,42 +423,45 @@ a {
   padding: 0 12px;
 }
 
-.grid-contents h4 {
-  font-size: 24px;
+.grid-item-contents h4 {
+  font-size: 2.4rem;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.grid-contents p {
+.grid-item-contents p {
   color: var(--color-gray-80);
-  font-size: 14px;
-  line-height: 1.6em;
+  font-size: 1.4rem;
+  /* line-hegith는 단위없이 쓰자. */
+  line-height: 1.6;
 }
 
-.grid-footer {
+.grid-item-footer {
   /* box-shadow: inset 0 0 20px rgb(0, 36, 128); */
-  /* padding: 14px 18px 14px 22px; */
+  /* 좌우 패딩만 */
   padding: 0 22px;
   margin-top: auto;
   display: flex;
   align-items: center;
   column-gap: 40px;
+
   overflow: hidden;
   flex-basis: 60px;
 }
 
-.grid-footer h5 {
+.grid-item-footer p {
   /* box-shadow: inset 0 0 20px rgb(0, 36, 128); */
-  font-size: 14px;
+  font-size: 1.4rem;
   color: var(--color-gray-50);
   /* 🩷 */
   position: relative;
 }
 
-.grid-footer h5::before {
+.grid-item-footer p::before {
   content: "";
   display: block;
   background-color: var(--color-gray-30);
+  /* 피그마상 320px, but 튀어나옴 */
   width: 320px;
   height: 4px;
 
@@ -462,12 +486,12 @@ a {
   box-shadow: 0 4px 4px 0 rgb(0 0 0 / 0.25);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 840px) {
   .section {
     padding: 60px 0px;
   }
 
-  .container-header {
+  .section-header {
     flex-direction: column;
     row-gap: 50px;
     text-align: center;
@@ -476,10 +500,10 @@ a {
 
   .header-title {
     width: 460px;
-    font-size: 36px;
+    font-size: 3.6rem;
   }
 
-  .container-header .button {
+  .section-header .button {
     margin-left: unset;
   }
 
@@ -487,12 +511,17 @@ a {
     width: 200px;
     height: 2px;
 
-    margin-left: 0;
-    top: 0;
+    /* position: absolute 풀고, 자연스러운 배치!! 
+    => 앱솔루트 쓰면 정교한 위치 조정이 필요하기 때문에.. 복잡성 피하자. */
+    position: unset;
+
+    display: block;
+    margin: 20px auto;
+
+    /* top: 0;
     left: 50%;
     transform: translateX(-50%);
-
-    margin-top: -10px;
+    margin-top: -10px; */
   }
 
   .list {

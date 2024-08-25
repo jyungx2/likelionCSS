@@ -19,205 +19,236 @@
   </head>
   <body>
     <main class="contents">
+      <!-- 🍉 type이 아닌, theme_purple로 해도 됨. -->
       <article class="section type_purple">
         <div class="l_wrapper">
-          <div class="container">
-            <div class="container-header">
-              <h1 class="header-title white">
-                START YOUR
-                <span class="highlight strong">PORTFOLIO</span>
-                <span class="highlight strong">PROJECT</span>
-              </h1>
-              <p class="header-description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled
-              </p>
-            </div>
+          <div class="section-header">
+            <!-- 🍉 섹션의 일부 디자인 or 독립적인 디자인이냐 => 딱히 상관없다. -->
+            <!-- header => section으로 바꾸자 -->
+            <h1 class="header-title color_white">
+              START YOUR
+              <span class="highlight type_strong">PORTFOLIO</span>
+              <span class="highlight type_strong">PROJECT</span>
+            </h1>
+            <p class="header-description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled
+            </p>
+          </div>
 
-            <div class="container-contents">
-              <ul class="pros">
-                <li class="pros-item">
-                  <div class="item">
-                    <div class="item-header">
-                      <h2>Rest</h2>
-                      <img class="pros-cover" src="images/photo01.png" />
-                    </div>
-
-                    <div class="item-main">
-                      <h3>Take a rest</h3>
-                      <ul class="setlist">
-                        <li class="list">
-                          It has survived not only five centuries.
-                        </li>
-                        <li class="list">Why do we use it?</li>
-                        <li class="list">
-                          Contrary to popular belief, Lorem Ipsum is not simply
-                          random text. It has root.
-                        </li>
-                      </ul>
-                    </div>
+          <div class="section-contents">
+            <!-- 🍉 이 부분은 섹션 소속으로 하기보다 독립적인 클래스명으로 가야 한다.
+               => 난 여기서 pros라는 독립적인 클래스를 지은 것! -->
+            <ul class="pros-container">
+              <!-- 💥디브를 또 만들어서 Nth-child 적용할 때 복잡하게 셀렉한 것!!💥 -->
+              <!-- 💥💥 사실 div를 또 만들지 않고, list(<li>)에 바로 
+                item-header, item-main 넣어도 된다.💥💥  -->
+              <li class="pros-item">
+                <div class="item">
+                  <div class="item-header">
+                    <h2>Rest</h2>
+                    <img class="pros-cover" src="images/photo01.png" />
                   </div>
-                </li>
 
-                <li class="pros-item">
-                  <div class="item right">
-                    <div class="item-header">
-                      <h2>Craft</h2>
-                      <img class="pros-cover" src="images/photo02.png" />
-                    </div>
-
-                    <div class="item-main">
-                      <h3>Build something</h3>
-                      <ul class="setlist">
-                        <li class="list">
-                          There are many variations of passages of Lorem Ipsum
-                          available.
-                        </li>
-                        <li class="list">
-                          If you are going to use a passage of Lorem Ipsum.
-                        </li>
-                        <li class="list">
-                          The standard chunk of Lorem Ipsum used since the 1500s
-                          is reproduced below for those interested.
-                        </li>
-                      </ul>
-                    </div>
+                  <div class="item-main">
+                    <h3>Take a rest</h3>
+                    <!-- 🍉 section-list가 아니라 그냥 list. -->
+                    <ul class="">
+                      <li class="list">
+                        It has survived not only five centuries.
+                      </li>
+                      <li class="list">Why do we use it?</li>
+                      <li class="list">
+                        Contrary to popular belief, Lorem Ipsum is not simply
+                        random text. It has root.
+                      </li>
+                    </ul>
                   </div>
-                </li>
+                </div>
+              </li>
 
-                <li class="pros-item">
-                  <div class="item">
-                    <div class="item-header">
-                      <h2>Scrap</h2>
-                      <img class="pros-cover" src="images/photo03.png" />
-                    </div>
-
-                    <div class="item-main">
-                      <h3>Reference</h3>
-                      <ul class="setlist">
-                        <li class="list">
-                          Once is therefore always free form repetition,
-                          injected humor, or non-characterisic words etc.
-                        </li>
-                        <li class="list">
-                          Predefined chunks as necessary, making this the first
-                          true generator on the internet.
-                        </li>
-                        <li class="list">
-                          Finibus Bonorum et Malorum by Cicero are also
-                          reproduced in their exact original form.
-                        </li>
-                      </ul>
-                    </div>
+              <li class="pros-item">
+                <div class="item right">
+                  <div class="item-header">
+                    <h2>Craft</h2>
+                    <img class="pros-cover" src="images/photo02.png" />
                   </div>
-                </li>
-              </ul>
-            </div>
+
+                  <div class="item-main">
+                    <h3>Build something</h3>
+                    <ul class="">
+                      <li class="list">
+                        There are many variations of passages of Lorem Ipsum
+                        available.
+                      </li>
+                      <li class="list">
+                        If you are going to use a passage of Lorem Ipsum.
+                      </li>
+                      <li class="list">
+                        The standard chunk of Lorem Ipsum used since the 1500s
+                        is reproduced below for those interested.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+
+              <li class="pros-item">
+                <div class="item">
+                  <div class="item-header">
+                    <h2>Scrap</h2>
+                    <img class="pros-cover" src="images/photo03.png" />
+                  </div>
+
+                  <div class="item-main">
+                    <h3>Reference</h3>
+                    <ul class="">
+                      <li class="list">
+                        Once is therefore always free form repetition, injected
+                        humor, or non-characterisic words etc.
+                      </li>
+                      <li class="list">
+                        Predefined chunks as necessary, making this the first
+                        true generator on the internet.
+                      </li>
+                      <li class="list">
+                        Finibus Bonorum et Malorum by Cicero are also reproduced
+                        in their exact original form.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+
+              <li class="pros-item">
+                <div class="item">
+                  <div class="item-header">
+                    <h2>Rest</h2>
+                    <img class="pros-cover" src="images/photo01.png" />
+                  </div>
+
+                  <div class="item-main">
+                    <h3>Take a rest</h3>
+                    <!-- 🍉 section-list가 아니라 그냥 list. -->
+                    <ul class="">
+                      <li class="list">
+                        It has survived not only five centuries.
+                      </li>
+                      <li class="list">Why do we use it?</li>
+                      <li class="list">
+                        Contrary to popular belief, Lorem Ipsum is not simply
+                        random text. It has root.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </article>
 
       <article class="section type_ivory">
         <div class="l_wrapper">
-          <div class="container">
-            <div class="container-header">
-              <h1 class="header-title coral ">
-                CALENDAR AND <span class="highlight light">EVENT TOOLS</span>
-              </h1>
+          <div class="section-header">
+            <h1 class="header-title color_coral ">
+              CALENDAR AND <span class="highlight type_light">EVENT TOOLS</span>
+            </h1>
 
-              <a href="" class="button">+ ADD TO CALENDAR</a>
-            </div>
+            <!--🍉 .section-button VS .button 으로 갈거니? -->
+            <a href="" class="button">+ ADD TO CALENDAR</a>
+          </div>
 
-            <div class="container-contents">
-              <div class="l_grid">
-                <div class="grid-item">
-                  <div class="grid-header">
-                    <img class="tool-cover" src="images/cover01.png" />
-                    <img class="sold-out-badge" src="images/badge.png" />
-                  </div>
-
-                  <div class="grid-contents">
-                    <div class="skill-type">
-                      <a>HTML</a>
-                      <a>CSS</a>
-                      <a>Javascript</a>
-                    </div>
-                    <h4>Digital Workplace Experience</h4>
-                    <p>
-                      It is a long established fact that a reader will be
-                      distracted by the readable content of a page when looking
-                      at its layout. The point of using Lorem Ipsum is that it
-                      has a more-or-less normal distribution of letters.
-                    </p>
-                  </div>
-
-                  <div class="grid-footer">
-                    <h5>CLOSED</h5>
-                  </div>
+          <div class="section-contents">
+            <div class="l_grid">
+              <div class="grid-item">
+                <!-- 🍉 grid-item-header로 가는게 좋다. -->
+                <div class="grid-item-header">
+                  <img class="tool-cover" src="images/cover01.png" />
+                  <img class="sold-out-badge" src="images/badge.png" />
                 </div>
 
-                <div class="grid-item">
-                  <div class="grid-header">
-                    <img class="tool-cover" src="images/cover02.png" />
+                <div class="grid-item-contents">
+                  <!-- type 말고, Type으로 가자. -->
+                  <div class="type">
+                    <a>HTML</a>
+                    <a>CSS</a>
+                    <a>Javascript</a>
                   </div>
-
-                  <div class="grid-contents">
-                    <div class="skill-type">
-                      <a>AR</a>
-                      <a>VR</a>
-                      <a>Headsets</a>
-                    </div>
-                    <h4>Augmented World Expo 2022</h4>
-
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </p>
-                  </div>
-                  <div class="grid-footer">
-                    <h5>14 members</h5>
-                    <div class="members">
-                      <img src="images/people01.png" />
-                      <img src="images/people02.png" />
-                      <img src="images/people03.png" />
-                    </div>
-                  </div>
+                  <h4>Digital Workplace Experience</h4>
+                  <p>
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters.
+                  </p>
                 </div>
 
-                <div class="grid-item">
-                  <div class="grid-header">
-                    <img class="tool-cover" src="images/cover03.png" />
+                <div class="grid-item-footer">
+                  <p>CLOSED</p>
+                </div>
+              </div>
+
+              <div class="grid-item">
+                <div class="grid-item-header">
+                  <img class="tool-cover" src="images/cover02.png" />
+                </div>
+
+                <div class="grid-item-contents">
+                  <div class="type">
+                    <a>AR</a>
+                    <a>VR</a>
+                    <a>Headsets</a>
+                  </div>
+                  <h4>Augmented World Expo 2022</h4>
+
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
+                </div>
+                <div class="grid-item-footer">
+                  <p>14 members</p>
+                  <div class="members">
+                    <img src="images/people01.png" />
+                    <img src="images/people02.png" />
+                    <img src="images/people03.png" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid-item">
+                <div class="grid-item-header">
+                  <img class="tool-cover" src="images/cover03.png" />
+                </div>
+
+                <div class="grid-item-contents">
+                  <div class="type">
+                    <a>Photoshop</a>
+                    <a>Illustrator</a>
                   </div>
 
-                  <div class="grid-contents">
-                    <div class="skill-type">
-                      <a>Photoshop</a>
-                      <a>Illustrator</a>
-                    </div>
+                  <h4>Adobe Summit</h4>
 
-                    <h4>Adobe Summit</h4>
-
-                    <p>
-                      printing and typesetting industry. Lorem Ipsum has been
-                      the industry's standard dummy text ever since the 1500s,
-                      when an unknown printer took a galley. printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley. printing and typesetting industry.
-                      Lorem Ipsum has been the industry's standard dummy text
-                      ever since the 1500s, when an unknown printer took a
-                      galley.
-                    </p>
-                  </div>
-                  <div class="grid-footer">
-                    <h5>124 members</h5>
-                    <div class="members">
-                      <img src="images/people04.png" />
-                      <img src="images/people05.png" />
-                      <img src="images/people06.png" />
-                    </div>
+                  <p>
+                    printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an
+                    unknown printer took a galley. printing and typesetting
+                    industry. Lorem Ipsum has been the industry's standard dummy
+                    text ever since the 1500s, when an unknown printer took a
+                    galley. printing and typesetting industry. Lorem Ipsum has
+                    been the industry's standard dummy text ever since the
+                    1500s, when an unknown printer took a galley.
+                  </p>
+                </div>
+                <div class="grid-item-footer">
+                  <p>124 members</p>
+                  <div class="members">
+                    <img src="images/people04.png" />
+                    <img src="images/people05.png" />
+                    <img src="images/people06.png" />
                   </div>
                 </div>
               </div>
